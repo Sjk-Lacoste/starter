@@ -12,6 +12,7 @@
   "author": "Tshepo Mohlatlole",
   "license": "MIT",
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.9.0",
     "autoprefixer": "^9.6.0",
     "browser-sync": "^2.26.7",
     "cssnano": "^4.1.10",
@@ -19,5 +20,8 @@
     "gulp-postcss": "^8.0.0",
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.5"
+  },
+  "dependencies": {
+    "bootstrap": "^4.3.1"
   }
 }

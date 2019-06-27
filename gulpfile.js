@@ -8,7 +8,7 @@ var gulp = require('gulp'),
 
 var paths = {
     styles: {
-        src: "src/styles/*.scss",
+        src: "src/styles/**/*.scss",
 
         dest: "build/css"
     },
@@ -23,21 +23,18 @@ function reload() {
 }
 
 function style() {
-    return (
-            gulp
-                .src(paths.styles.src)
-                // Initialise sourcemaps before compilation starts
-                .pipe(sourcemaps.init())
-                .pipe(sass())
-                .on("error", sass.logError)
-                // Use postcss with autoprefixer and compress the compiled file using css nano
-                .pipe(postcss([autoprefixer(), cssnano()]))
-                // Now add/write the sourcemaps
-                .pipe(sourcemaps.write())
-                .pipe(gulp.dest(paths.styles.dest))
-                // Add browserSync stream pipe after compilation
-                .pipe(browserSync.stream())
-        );
+    return gulp.src(paths.styles.src)
+        // Initialise sourcemaps before compilation starts
+        .pipe(sourcemaps.init())
+        .pipe(sass())
+        .on("error", sass.logError)
+        // Use postcss with autoprefixer and compress the compiled file using css nano
+        .pipe(postcss([autoprefixer(), cssnano()]))
+        // Now add/write the sourcemaps
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest(paths.styles.dest))
+        // Add browserSync stream pipe after compilation
+        .pipe(browserSync.stream());
 }
 
 // Add browserSync initialisation at the start of the watch task
@@ -51,11 +48,11 @@ function watch() {
 
     style();
 
-    gulp.watch(paths.styles.src, style, reload);
+    gulp.watch(paths.styles.src, style);
 
     // Tell gulp which files to watch to trigger the reload
     // This can be html or whatever  you're using to develop your website
-    gulp.watch(paths.html.src).on('change', reload);
+    gulp.watch(paths.html.src).on('change', browserSync.reload);
 }
 
 exports.style = style;

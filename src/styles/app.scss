@@ -1,4 +1,13 @@
 @import 'helpers/helpers';
+
+// Font Awesome
+@import '../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '../../node_modules/@fortawesome/fontawesome-free/scss/solid.scss';
+@import '../../node_modules/@fortawesome/fontawesome-free/scss/brands.scss';
+
+// Bootstrap 
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+
 @import 'base/base';
 @import 'layout/layout';
 @import 'modules/modules';
